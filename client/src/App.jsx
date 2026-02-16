@@ -1,6 +1,6 @@
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import CourseCard from './components/CourseCard';
+import Navbar from './components/Navbar';
 
 function App() {
 
@@ -9,7 +9,7 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<CourseCard />} />
+          <Route path='/' element={<Navbar />} />
         </Routes>
       </BrowserRouter>
 
