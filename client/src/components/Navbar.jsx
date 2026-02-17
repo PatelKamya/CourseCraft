@@ -1,37 +1,55 @@
 import { useState } from "react";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import NotificationsIcon from "@mui/icons-material/Notifications";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("Home");
+
+  const links = ["Home", "Projects", "Videos"];
 
   return (
     <nav className="w-full bg-slate-50 shadow-sm">
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-6">
         <div className="flex items-center justify-between h-16">
 
-          {/* Left - Logo */}
+          {/* Logo */}
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-blue-500 rounded-full"></div>
-            <span className="font-bold text-lg">Coding</span>
+<span className="font-bold text-lg">CourseCraft</span>
           </div>
 
-          {/* Center - Links (Desktop) */}
-          <div className="hidden md:flex space-x-10 font-medium">
-            <a href="#" className="hover:text-blue-500">Home</a>
-            <a href="#" className="hover:text-blue-500">Projects</a>
-            <a href="#" className="hover:text-blue-500">Videos</a>
+          {/* Center Menu */}
+          <div className="hidden md:flex gap-12 font-medium">
+            {links.map((item) => (
+              <button
+                key={item}
+                onClick={() => setActive(item)}
+                className={`relative pb-1 ${
+                  active === item ? "text-black" : "text-gray-600"
+                }`}
+              >
+                {item}
+                {active === item && (
+                  <span className="absolute left-0 -bottom-1 w-full bg-blue-500" />
+                )}
+              </button>
+            ))}
           </div>
 
-          {/* Right - Social Icons (Desktop) */}
-          <div className="hidden md:flex space-x-3">
-            <div className="w-8 h-8 bg-red-500 rounded"></div>
-            <div className="w-8 h-8 bg-gray-800 rounded"></div>
-            <div className="w-8 h-8 bg-sky-400 rounded"></div>
+          {/* Right Icons */}
+          <div className="hidden md:flex gap-4">
+            <div className="flex gap-4 pt-2">
+  <NotificationsIcon />
+  <AccountCircleIcon />
+</div>
+
+            {/* <TwitterIcon className="text-sky-400 cursor-pointer" /> */}
           </div>
 
-          {/* Mobile Button */}
+          {/* Mobile Toggle */}
           <button
             onClick={() => setOpen(!open)}
-            className="md:hidden"
+            className="md:hidden text-2xl"
           >
             ☰
           </button>
@@ -43,15 +61,29 @@ export default function Navbar() {
         <div className="md:hidden bg-white border-t">
           <div className="flex flex-col items-center gap-4 py-4">
 
-            <a href="#">Home</a>
-            <a href="#">Projects</a>
-            <a href="#">Videos</a>
+            {links.map((item) => (
+              <button
+                key={item}
+                onClick={() => {
+                  setActive(item);
+                  setOpen(false);
+                }}
+                className="font-medium"
+              >
+                {item}
+              </button>
+            ))}
 
-            <div className="flex gap-3 pt-2">
-              <div className="w-8 h-8 bg-red-500 rounded"></div>
-              <div className="w-8 h-8 bg-gray-800 rounded"></div>
-              <div className="w-8 h-8 bg-sky-400 rounded"></div>
-            </div>
+            {/* Right Icons */}
+{/* Right Icons */}
+<div className="hidden md:flex items-center gap-4">
+
+  <NotificationsIcon className="cursor-pointer text-gray-700 hover:text-blue-500" />
+
+  <AccountCircleIcon className="cursor-pointer text-gray-700 hover:text-blue-500" />
+
+</div>
+
 
           </div>
         </div>
