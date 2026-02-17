@@ -2,8 +2,8 @@
 
 const CourseCard = () => {
   return (
-<div className="max-w-sm bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition duration-300">
-      
+    <div className="max-w-sm bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-xl transition duration-300">
+
       {/* Course Image */}
       <img
         className="w-full h-48 object-cover"
