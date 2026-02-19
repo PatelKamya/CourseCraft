@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import CourseCard from './components/CourseCard'
 
-function App() {
+  function App() {
 
 
   return (
@@ -15,8 +15,8 @@ function App() {
         </Routes>
       </BrowserRouter>
 
-    </>
-  )
-}
+      </>
+    )
+  }
 
 export default App
