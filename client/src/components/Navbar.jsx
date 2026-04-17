@@ -1,93 +1,114 @@
-import { useState } from "react";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import NotificationsIcon from "@mui/icons-material/Notifications";
+import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
+import FolderOutlinedIcon from "@mui/icons-material/FolderOutlined";
+import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
+import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
+import HeadphonesOutlinedIcon from "@mui/icons-material/HeadphonesOutlined";
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
+import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
+import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
+import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
 
-export default function Navbar() {
-  const [open, setOpen] = useState(false);
-  const [active, setActive] = useState("Home");
-
-  const links = ["Home", "Projects", "Videos"];
-
+const Navbar = () => {
   return (
-    <nav className="w-full bg-slate-50 shadow-sm">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex items-center justify-between h-16">
+    <div className="flex min-h-screen bg-gray-100">
 
-          {/* Logo */}
-          <div className="flex items-center gap-2">
-<span className="font-bold text-lg">CourseCraft</span>
+      {/* SIDEBAR */}
+      {/* <aside className="hidden md:flex w-20 bg-black text-white flex-col items-center py-6 space-y-9"> */}
+<aside className="hidden md:flex w-20 bg-black text-white flex-col items-center py-6 space-y-9">
+        <div >
+          <span className="font-brand text-md">
+  CourseCraft
+</span>
           </div>
 
-          {/* Center Menu */}
-          <div className="hidden md:flex gap-12 font-medium">
-            {links.map((item) => (
-              <button
-                key={item}
-                onClick={() => setActive(item)}
-                className={`relative pb-1 ${
-                  active === item ? "text-black" : "text-gray-600"
-                }`}
-              >
-                {item}
-                {active === item && (
-                  <span className="absolute left-0 -bottom-1 w-full bg-blue-500" />
-                )}
-              </button>
-            ))}
-          </div>
+        <nav className="flex flex-col space-y-8">
+         <div className="flex flex-col items-center gap-8">
 
-          {/* Right Icons */}
-          <div className="hidden md:flex gap-4">
-            <div className="flex gap-4 pt-2">
-  <NotificationsIcon />
-  <AccountCircleIcon />
-</div>
+  <GridViewOutlinedIcon className="hover:text-white cursor-pointer" />
 
-            {/* <TwitterIcon className="text-sky-400 cursor-pointer" /> */}
-          </div>
+  <FolderOutlinedIcon className="hover:text-white cursor-pointer" />
 
-          {/* Mobile Toggle */}
-          <button
-            onClick={() => setOpen(!open)}
-            className="md:hidden text-2xl"
-          >
-            ☰
-          </button>
-        </div>
-      </div>
+  <EditOutlinedIcon className="hover:text-white cursor-pointer" />
 
-      {/* Mobile Menu */}
-      {open && (
-        <div className="md:hidden bg-white border-t">
-          <div className="flex flex-col items-center gap-4 py-4">
+  <BookmarkBorderIcon className="hover:text-white cursor-pointer" />
 
-            {links.map((item) => (
-              <button
-                key={item}
-                onClick={() => {
-                  setActive(item);
-                  setOpen(false);
-                }}
-                className="font-medium"
-              >
-                {item}
-              </button>
-            ))}
+  <HeadphonesOutlinedIcon className="hover:text-white cursor-pointer" />
 
-            {/* Right Icons */}
-{/* Right Icons */}
-<div className="hidden md:flex items-center gap-4">
-
-  <NotificationsIcon className="cursor-pointer text-gray-700 hover:text-blue-500" />
-
-  <AccountCircleIcon className="cursor-pointer text-gray-700 hover:text-blue-500" />
+  <SettingsOutlinedIcon className="hover:text-white cursor-pointer" />
 
 </div>
+<div className="mt-auto flex justify-center pb-6">
+    <LogoutOutlinedIcon className="hover:text-white cursor-pointer" />
+  </div>
+        </nav>
 
+      </aside>
+
+      {/* MAIN */}
+      <main className="flex-1 p-4 md:p-6">
+
+        {/* HEADER */}
+        <header className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+
+          {/* Search */}
+          <div className="flex items-center bg-white rounded-xl px-4 py-2 shadow w-full md:w-96 border">
+            <input
+              placeholder="Search"
+              className="outline-none flex-1"
+            />
+            <SearchOutlinedIcon/>
+          </div>
+
+          {/* Profile */}
+          <div className="flex items-center gap-3">
+            <div className="px-5">
+             <NotificationsOutlinedIcon/>
+             </div>
+            <img
+              src="https://i.pravatar.cc/40"
+              className="rounded-full w-10 h-10"
+            />
+            <div>
+              <p className="font-semibold">Kacie</p>
+              <p className="text-sm text-gray-500">@k_velasquez</p>
+            </div>
+          </div>
+
+        </header>
+
+        {/* CONTENT */}
+        <div className="mt-8">
+
+          <h1 className="text-2xl font-bold mb-6">My Courses</h1>
+
+          {/* Cards */}
+          <div className="grid md:grid-cols-3 gap-6">
+
+            <div className="bg-yellow-300 rounded-xl p-5">
+              <h2 className="font-semibold">Creative Writing</h2>
+              <p className="text-sm mt-2">5 / 20 lessons</p>
+              <button className="mt-4 bg-orange-500 text-white px-4 py-2 rounded-lg">
+                Continue
+              </button>
+            </div>
+
+            <div className="bg-purple-300 rounded-xl p-5">
+              <h2 className="font-semibold">Illustrator</h2>
+              <p className="text-sm mt-2">12 / 50 lessons</p>
+            </div>
+
+            <div className="bg-blue-300 rounded-xl p-5">
+              <h2 className="font-semibold">Public Speaking</h2>
+              <p className="text-sm mt-2">18 / 22 lessons</p>
+            </div>
 
           </div>
+
         </div>
-      )}
-    </nav>
+
+      </main>
+    </div>
   );
 }
+
+export default Navbar;
