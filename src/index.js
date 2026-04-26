@@ -5,21 +5,25 @@ import cors from "cors";
 
 // Routes
 import courseRoutes from "./routes/course-route.js";
+import enrollmentRoutes from "./routes/enrollment-route.js";
+import skillRoutes from "./routes/skill.route.js";
 
 dotenv.config();
 
 const app = express();
 
 // Middlewares
-app.use(express.json());
 app.use(cors());
-
+app.use(express.json());
+app.use("/uploads", express.static("uploads"));
 // Routes
 app.use("/api/courses", courseRoutes);
+app.use("/api/enrollment", enrollmentRoutes);
+app.use("/api/skill", skillRoutes);
 
 // Health Check Route
 app.get("/", (req, res) => {
-  res.send("Server is running 🚀");
+  res.send("Server is running ");
 });
 
 // Global Error Handler (VERY IMPORTANT)
@@ -36,7 +40,7 @@ app.use((err, req, res, next) => {
 const startServer = async () => {
   try {
     await mongoose.connect(process.env.MONGODB_URL_STG);
-    console.log("MongoDB Connected ✅");
+    console.log("MongoDB Connected ");
 
     const PORT = process.env.PORT || 5000;
 
@@ -44,7 +48,7 @@ const startServer = async () => {
       console.log(`Server running on port ${PORT}`);
     });
   } catch (error) {
-    console.log("Startup error ❌", error.message);
+    console.log("Startup error ", error.message);
     process.exit(1);
   }
 };
