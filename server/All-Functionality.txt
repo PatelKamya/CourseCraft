@@ -1,0 +1,123 @@
+Skill Gap Analyzer
+
+Description
+- Upload resume (PDF)
+- Select target role
+- Extract skills
+- Find missing skills
+- Suggest courses
+
+Tech
+- multer (file upload)
+- pdf-parse (PDF → text)
+- OpenAI API (analysis)
+
+API
+POST /api/skill-analyzer
+
+Resume Improver
+
+Description
+- Improve resume content
+- Rewrite bullet points
+- Suggest better wording
+
+Tech
+- OpenAI API
+
+API
+POST /api/resume-improve
+
+Course Management
+
+ Description
+- Admin: Add / Update / Delete course
+- User: View courses
+
+ Tech
+- MongoDB (Mongoose)
+- Express APIs
+
+ APIs
+POST   /api/course
+GET    /api/course
+PUT    /api/course/:id
+DELETE /api/course/:id
+
+Course Recommendation Engine
+
+ Description
+- Input: missing skills
+- Output: matching courses from DB
+
+ Tech
+- Backend logic (no AI)
+
+ API
+POST /api/recommend-course
+
+User Dashboard
+
+ Description
+- Show skill progress
+- Show enrolled courses
+- Show recommendations
+
+ Tech
+- React
+- Chart.js
+
+ API
+GET /api/dashboard
+
+Quiz System
+
+ Description
+- MCQ based test
+- Score calculation
+
+ Tech
+- MongoDB (questions)
+- Express
+
+ APIs
+POST /api/quiz
+GET  /api/quiz/:courseId
+POST /api/quiz/submit
+
+Progress Tracking
+
+ Description
+- Track course progress
+- Track skill completion
+
+ Tech
+- MongoDB
+
+ APIs
+POST /api/progress
+GET  /api/progress/:userId
+
+AI Chat Mentor
+
+ Description
+- Ask learning questions
+- Get AI guidance
+
+ Tech
+- OpenAI API
+
+ API
+POST /api/ai-chat
+
+Certificate System
+
+ Description
+- Generate certificate after completion
+
+ Tech
+- PDF generation (node)
+
+ API
+GET /api/certificate/:courseId
+
